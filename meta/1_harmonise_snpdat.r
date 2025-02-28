@@ -1,19 +1,6 @@
 # .......................................................................................................
 # ...............RSCRIPT for QC and harmonising of finngen sumstats for educ fields with moba GWAS.......................
 
-
-#run this on the cluster without EA adjustemnt, and then also wi EA adjustemnt:
-# for i in {0..10}; do
-#     Rscript finngen_SNPs_harmonise.R "/cluster/projects/p805/rosac/fields/output/finngen/finngen_raw/no_ea_C$(printf "%02d" $i).gz" > finngen_noEA_harmonise_log.txt
-# 	done
-
-# for i in {0..10}; do
-#     Rscript finngen_SNPs_harmonise.R "/cluster/projects/p805/rosac/fields/output/finngen/finngen_EA/C$(printf "%02d" $i).gz" > finngen_harmonise_log.txt
-# done
-# harmonise moba sumstats so they match finngen
-#  change SNP column to chrbp
-
-# .......................................................................................................
 library(dplyr)
 library(data.table)
 # library(psych)
