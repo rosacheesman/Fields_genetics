@@ -98,3 +98,45 @@ for (i in 1:length(traits_pairs)) {
   save(LDSCoutput, file=filename)
 }
 # _____________________________________________________________________________________
+
+
+# Define the list of trait pairs
+traits_pairs <- c(
+"Cheesman_meta_edu.txt.gz","Cheesman_meta_arts.txt.gz","Cheesman_meta_social.txt.gz","Cheesman_meta_business.txt.gz",
+"Cheesman_meta_natural_sci.txt.gz","Cheesman_meta_ict.txt.gz","Cheesman_meta_engineering.txt.gz","Cheesman_meta_agri.txt.gz",
+"Cheesman_meta_health.txt.gz","Cheesman_meta_services.txt.gz")
+ea4_trait <- "EA4_excl_23andMe_exclMOBA_2022_04_04.meta.gz"
+# Define the corresponding population prevalences and sample prevalences for the pairs
+# sum of neff:
+traits_N <- c(102970	,97262	,69123	,261182	,40072	,50819	,317209	,63834	,292929	,168157)
+ea4_N <- 765283
+# define names
+field_names <- c("edu", "arts", "social", "business", "natural_sci", "ict", "engineering", "agri", "health", "services")
+ea4_name <- "EA4_excl_23andMe_exclMOBA_2022_04_04.meta.gz"
+
+
+ref = "reference.1000G.maf.0.005.txt"
+se.logit = c(F,F)
+info.filter = 0.6
+maf.filter = 0.01
+linprobs=c(T,F)
+ols=c(F,T)
+
+# Loop through each trait pair, perform sumstats() 
+for (i in 1:length(traits_pairs)) {
+  # Define the current traits and prevalences
+  current_trait <- traits_pairs[i]
+  current_N <- traits_N[i]
+  current_name <- field_names[i]
+  
+  # Construct the traits, population prevalence, and sample prevalence vectors
+  traits <- c(current_trait, ea4_trait)
+  Ns <- c(current_N, ea4_N)
+  names <- c(current_name, ea4_name)
+  
+  # sumstats() command per field
+  sumstats<-sumstats(traits, ref, trait.names=names, se.logit, info.filter, maf.filter, OLS=ols,linprob=linprobs,N=Ns,betas=NULL)
+  filename <- paste( "EA4", current_name, "Sumstats.RData", sep="_")
+  save(sumstats, file=filename)
+
+}
