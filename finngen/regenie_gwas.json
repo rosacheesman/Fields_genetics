@@ -1,0 +1,34 @@
+{
+  "regenie.sub_step1.docker": "eu.gcr.io/finngen-sandbox-v3-containers/regenie:2.2.4_FG_0.1.3",
+  "regenie.sub_step2.docker": "eu.gcr.io/finngen-sandbox-v3-containers/regenie:2.2.4_FG_0.1.3",
+
+  "regenie.phenolist": "SANDBOX_RED/Vilpin/pheno_list.txt",
+  "regenie.is_binary": true,
+  "regenie.cov_pheno": "SANDBOX_RED/Vilpin/ea_pheno cov 2.txt.gz",
+  "regenie.covariates": "SEX_IMPUTED,AGE_AT_DEATH_OR_END_OF_FOLLOWUP,PC(1:10),EA,IS_FINNGEN2 CHIP,BATCH DS1_BOTNIA Dgi_norm,BATCH DS10 FINRISK Palotie norm,BATCH DS11 FINRISK PredictCVD_COROGENE_Tarto_norm,BATCH DS12 FINRISK Summit_norm_relift,BATCH DS13 FINRISK B norm,BATCH DS14 GENERISK norm,BATCH DS15 H2000 Fimm norm,BATCH DS16 H2000 Fimm_norm,BATCH DS17 H2000_Genemets_norm_relift,BATCH DS18 FINRISK Summit_norm_relift,BATCH DS19 MIGRAINE_1_norm_relift,BATCH DS20 BOTNIA_T2dgo_norm,BATCH DS21 SUPER_2_norm_relift,BATCH DS22 TWINS_1_norm,BATCH DS23 TWINS_2_norm_nosymmetric,BATCH DS24 SUPER_3_norm,BATCH DS25 BOTNIA_A_Regeneron_norm,BATCH DS26 DIREVA_norm,BATCH DS27 NFBC66_norm,BATCH DS28 NFBC86_norm,BATCH DS3_COROGENE_Sanger_norm,BATCH DS4_FINRISK_Corogene_norm,BATCH DS5_FINRISK_Engage_norm,BATCH DS6_FINRISK_FR02_Broad_norm_relift,BATCH DS7_FINRISK_FR12_norm,BATCH DS8_FINRISK_Finpcga_norm,BATCH DS9_FINRISK_Mrpred_norm",
+  
+  "regenie.auto_remove_sex_covar": true,
+  "regenie.sex_col_name": "SEX_IMPUTED",
+
+  "regenie.sub_step2.run_sex_specific": true,
+  "regenie.sub_step2.step2.sex_specific_logpval": 1.623249,
+
+  "regenie.sub_step1.step1.covariate_inclusion_threshold": 10,
+  "regenie.sub_step1.step1.grm_bed": "LIBRARY_RED/finngen_R11/grm_1.0/R11_GRM_V0_LD_0.2.bed",
+  "regenie.sub_step1.step1.bsize": 1000,
+  "regenie.sub_step1.step1.options": "",
+
+  "regenie.sub_step2.bgenlist": "LIBRARY_RED/finngen_R11/bgen/finngen_R11_bgen_list.txt",
+  "regenie.sub_step2.step2.test": "additive",
+  "regenie.sub_step2.step2.bsize": 300,
+  "regenie.sub_step2.step2.options": "--firth --approx --pThresh 0.01 --firth-se",
+
+  "regenie.sub_step2.gather.docker": "eu.gcr.io/finngen-sandbox-v3-containers/saige:0.39.1-fg",
+  "regenie.sub_step2.summary.docker": "eu.gcr.io/finngen-sandbox-v3-containers/saige:0.39.1-fg-pysam",
+  "regenie.sub_step2.summary.gnomad_site": "LIBRARY_GREEN/finngen_R11/finngen_R11_analysis_data/annotations/R11_annotated_variants_v1.gz",
+  "regenie.sub_step2.summary.gnomad_annotation": "LIBRARY_GREEN/finngen_R6/finngen_R6_analysis_data/annotations/fin_enriched_genomes_select_columns.txt.gz",
+  "regenie.sub_step2.summary.summary_pval_thresh": 1e-6,
+  "regenie.sub_step2.summary.coding_pval_thresh": 1e-4,
+
+  "regenie.coding_gather.docker": "eu.gcr.io/finngen-sandbox-v3-containers/bioinformatics:0.7"
+}
