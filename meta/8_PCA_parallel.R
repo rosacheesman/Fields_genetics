@@ -19,7 +19,7 @@ loadings_pc2 <- eigen_result$vectors[, 2] * sqrt(eigen_result$values[2])
 
 # Create a dataframe for plotting
 loadings_df <- data.frame(
-  Variable = rownames(cor_matrix),
+  Variable = rownames(cormatrix),
   PC1 = loadings_pc1,
   PC2 = loadings_pc2
 )
@@ -27,7 +27,7 @@ loadings_df <- data.frame(
 # .......................................................................................................
 # plot PC1 and 2 coords
 
-# Create circle coordinates
+# Create circle 
 theta <- seq(0, 2*pi, length.out = 100)
 circle <- data.frame(x = cos(theta), y = sin(theta))
 
